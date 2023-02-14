@@ -1,0 +1,35 @@
+posibles nombres:
+
+sistema de control y registro
+
+empleados
+
+analisis
+
+perfil
+
+portal
+
+recursos
+
+estado
+
+gestion, gestor
+
+digital
+
+procesos
+
+flujo
+
+accion
+
+Control de Estado de Recursos y Gestion de Estados Digital
+CERGED
+
+Sistema de Estado de Perfiles y Flujos de Estado de Datos
+
+SEPFED
+
+Sistema, Contro, Gestion
+SCG
