@@ -1,4 +1,5 @@
 <x-base>
+    <x-header/>
     <table class="table">
         <thead>
           <tr>

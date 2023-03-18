@@ -20,8 +20,14 @@ Route::get('/', function () {
 });
 
 Route::get('login', function(){
-    return view('login');
-})->middleware('guest')->name('session.index');
+    return redirect('/');
+})->name('login');
+
+Route::get('menu', function(){
+return view('menu');
+})->middleware('auth');
+
+/*----------------------------*/
 
 Route::post('login', function() {
     $attributes = request()->validate([
@@ -36,8 +42,11 @@ Route::post('login', function() {
     }
 
     session()->regenerate();
-    return redirect('/')->with('success', 'Logged in successfully');
+    return redirect('menu')->with('success', 'Logged in successfully');
 })->middleware('guest')->name('session.login');
+
+
+/*---------------------*/
 
 Route::post('logout', function() {
     auth()->logout();
