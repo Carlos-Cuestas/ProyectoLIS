@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\SchoolController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Validation\ValidationException;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,11 +16,32 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('inicio');
 });
 
-Route::get('hola', function()
-{
-    return view('hola');
-});
+Route::get('login', function(){
+    return view('login');
+})->middleware('guest')->name('session.index');
 
+Route::post('login', function() {
+    $attributes = request()->validate([
+        'dui' => 'required|numeric',
+        'password' => 'required|string|max:255'
+    ]);
+
+    if (!auth()->attempt($attributes, false)) {
+        throw ValidationException::withMessages([
+            'dui' => 'Credentials are incorrect',
+        ]);
+    }
+
+    session()->regenerate();
+    return redirect('/')->with('success', 'Logged in successfully');
+})->middleware('guest')->name('session.login');
+
+Route::post('logout', function() {
+    auth()->logout();
+    return redirect('/')->with('success', 'Logged out successfully');
+})->middleware('auth')->name('session.logout');
+
+Route::resource('schools', SchoolController::class);

@@ -9,6 +9,10 @@ class School extends Model
 {
     use HasFactory;
 
+    protected $guarded = [
+        'id',
+    ];
+
     public $timestamps = false;
 
     public function state(){
