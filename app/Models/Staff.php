@@ -10,6 +10,7 @@ class Staff extends Model
     use HasFactory;
     public $timestamps = false;
 
+    protected $guarded = ['id',];
     public function state(){
         return $this->belongsTo(State::class);
     }

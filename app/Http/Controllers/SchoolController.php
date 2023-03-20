@@ -23,7 +23,10 @@ class SchoolController extends Controller
      */
     public function create()
     {
-        //Formulario de creacion
+        return view('Schools/Create', [
+            'states' => State::all(),
+
+        ]);
     }
 
     /**

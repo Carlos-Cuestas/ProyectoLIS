@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\SchoolController;
+use App\Http\Controllers\StaffController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Validation\ValidationException;
 
@@ -19,6 +20,10 @@ Route::get('/', function () {
     return view('inicio');
 });
 
+Route::get('funcion', function () {
+    return view('pesta');
+});
+
 Route::get('login', function(){
     return redirect('/');
 })->name('login');
@@ -27,6 +32,13 @@ Route::get('menu', function(){
 return view('menu');
 })->middleware('auth');
 
+Route::get('menur', function(){
+    return view('menu');
+    })->name('menur');
+
+Route::get('scho', function(){
+    return redirect('schools');
+})->name('scho');
 /*----------------------------*/
 
 Route::post('login', function() {
@@ -53,4 +65,6 @@ Route::post('logout', function() {
     return redirect('/')->with('success', 'Logged out successfully');
 })->middleware('auth')->name('session.logout');
 
-Route::resource('schools', SchoolController::class);
+Route::resource('schools', SchoolController::class)->middleware('auth');
+Route::resource('staff', StaffController::class)->middleware('auth');
+

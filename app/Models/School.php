@@ -13,6 +13,7 @@ class School extends Model
         'id',
     ];
 
+
     public $timestamps = false;
 
     public function state(){
