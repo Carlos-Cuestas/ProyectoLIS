@@ -6,13 +6,16 @@
             background-size: cover;
         }
     </style>
-    <x-header/>
+    <x-header controller="schools"/>
 
-    <main style="display: flex">
-        <x-sidemenu/>
+    <main style="display: flex;">
+        <x-sidemenu controller="schools"/>
 
         <table class="table" style="width: 65%;">
             <thead>
+                <tr>
+                    <th><br><th>
+                </tr>
               <tr class="table-dark">
                 <th scope="col">Name</th>
                 <th scope="col">State</th>
@@ -29,8 +32,7 @@
                 @endforeach
             </tbody>
 
-            <a href="{{route('schools.create')}}"><p>Hola</p></a>
           </table>
     </main>
-
+    <x-footer/>
 </x-base>

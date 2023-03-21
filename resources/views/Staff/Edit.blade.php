@@ -1,5 +1,5 @@
 <x-base>
-    <x-header/>
+    <x-header controller="staff"/>
     <form action="{{ route('staff.update', $staff->id) }}" method="POST">
     @csrf
     @method('PATCH')

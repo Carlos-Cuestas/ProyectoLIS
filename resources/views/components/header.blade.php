@@ -1,11 +1,17 @@
 <header style="background-color: black;">
     <ul class="nav justify-content-end">
         <li class="nav-item">
+
+
             @guest
                 <a class="nav-link" data-bs-toggle="modal" data-bs-target="#loginmodal" href="#"><img src="/img/web-10.png" alt="no logo" width="30px" height="35px"></a>
             @endguest
-
+            
             @auth
+            <div style="display: flex;">
+                <p class=" text-white" style="padding: 3%;">{{ auth()->user()->role->type }}</p>
+                <p class=" text-white" style="padding: 3%;">{{ auth()->user()->name }}</p>
+
             <form class="nav-link" action="{{ route('session.logout') }}" method="POST">
                 @csrf
                 <button type="submit" class="btn border-0 rounded-circle">
@@ -13,11 +19,12 @@
                 </button>
 
             </form>
+            </div>
             @endauth
+
         </li>
       </ul>
 
-      <!-- Modal -->
     <form action="{{ route('session.login') }}" method="POST">
         @csrf
     <div class="modal fade modal" id="loginmodal">
@@ -32,8 +39,9 @@
             <div class="modal-body">
               <form>
                 <div class="mb-3">
+
                   <label for="recipient-name" class="col-form-label">Usuario:</label>
-                  <x-input id="dui" placeholder="" value="930498281" class="form-control"/>
+                  <x-input id="dui" placeholder="" value="930498281 574533917" class="form-control"/>
                 </div>
 
                 <div class="mb-3">

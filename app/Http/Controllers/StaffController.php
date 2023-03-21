@@ -25,7 +25,11 @@ class StaffController extends Controller
      */
     public function create()
     {
-        //
+        return view('Staff/Create', [
+            'schools' => School::all(),
+            'positions' => Position::all(),
+            'states' => State::all(),
+        ]);
     }
 
     /**
@@ -91,7 +95,7 @@ class StaffController extends Controller
             $teacher->campo = $teacheratributes['campo'];
             $teacher->grado = $teacheratributes['grado'];
             $teacher->save();*/
-            
+
             $staff->teacher->fill($teacheratributes)->save();
         }
 

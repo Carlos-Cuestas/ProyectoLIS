@@ -1,10 +1,10 @@
 <x-base>
     <x-header/>
     <main style="display:flex;">
-        <x-sidemenu controller="schools"/>
+        <x-sidemenu controller="staff"/>
 
         <section>
-            <form action="{{ route('schools.store') }}" method="POST">
+            <form action="{{ route('staff.store') }}" method="POST">
                 @csrf
 
                 @method('POST')

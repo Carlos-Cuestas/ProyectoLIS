@@ -1,6 +1,8 @@
 <x-base>
     <x-header/>
 
+<main style="display: flex;">
+    <x-sidemenu controller="staff"/>
     <table class="table">
         <thead>
           <tr>
@@ -23,5 +25,8 @@
             @endforeach
         </tbody>
       </table>
+</main>
+
+      <x-footer/>
 </x-base>
 
