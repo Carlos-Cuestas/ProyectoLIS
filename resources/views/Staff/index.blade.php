@@ -5,22 +5,27 @@
     <x-sidemenu controller="staff"/>
     <table class="table">
         <thead>
-          <tr>
+            <tr>
+                <th></th>
+            </tr>
+          <tr class="table-dark">
             <th scope="col">DUI</th>
             <th scope="col">Nombre</th>
             <th scope="col">Estado</th>
             <th scope="col">Escuela</th>
             <th scope="col">Puesto</th>
+            <th scope="col">Editar</th>
           </tr>
         </thead>
         <tbody>
             @foreach ($allstaff as $staff)
             <tr>
             <td>{{ $staff->dui}}</td>
-            <td><a href="{{ route('staff.edit', $staff->id) }}">{{ $staff->nombre }}</a></td>
+            <td>{{ $staff->nombre }}</td>
             <td>{{ $staff->state->name }}</td>
             <td>{{ $staff->school->name }}</td>
             <td>{{ $staff->position->nombre}}</td>
+            <td><a href="{{ route('staff.edit', $staff->id) }}"><img src="/img/edit.png" alt="editimg" height="25px" width="25px"></a></td>
             </tr>
             @endforeach
         </tbody>

@@ -14,7 +14,7 @@
 
                             @if (auth()->user()->role_id == 1)
                             <div class="col">
-                            <x-menubutton src="/img/useravatar.png" href="schools" mesaje="Usuarios" styler="padding:2%;"/>
+                            <x-menubutton src="/img/useravatar.png" href="users" mesaje="Usuarios" styler="padding:2%;"/>
                             </div>
                             @endif
 

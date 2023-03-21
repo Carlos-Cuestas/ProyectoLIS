@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Role;
 use App\Models\User;
 use Illuminate\Http\Request;
+
 
 class UserController extends Controller
 {
@@ -13,7 +15,8 @@ class UserController extends Controller
     public function index()
     {
         return view('Users/Index',[
-            'users' => User::all()->loar('role'),
+            'users' => User::all()->load('role'),
+
         ]);
     }
 
@@ -22,7 +25,9 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        return view('Users/Create',[
+            'roles' => Role::all(),
+        ]);
     }
 
     /**
@@ -30,7 +35,17 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $attributes = $request->validate([
+            'name' => 'required|string|max:255',
+            'dui' => 'required|string|max:255',
+            'password' => 'required|string|max:255',
+            'carnet' => 'required|string|max:255',
+            'role_id' => 'required|numeric|exists:roles,id'
+        ]);
+
+        User::create($attributes);
+
+        return back()->with('success', 'School created successfully');
     }
 
     /**
@@ -46,7 +61,11 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        //
+        return view('Users/Edit', [
+            'user' => $user,
+            'roles'=> Role::all(),
+
+        ]);
     }
 
     /**
@@ -54,7 +73,18 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        //
+        $attributes = $request->validate([
+            'name' => 'required|string|max:255',
+            'carnet' => 'required|string|max:255',
+            'dui' => 'required',
+            'role_id' => 'required|numeric|exists:roles,id',
+
+        ]);
+
+        $user->fill($attributes);
+        $user->save();
+
+        return back()->with('success', 'School updated successfully');
     }
 
     /**

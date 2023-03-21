@@ -38,9 +38,15 @@ class StaffController extends Controller
     public function store(Request $request)
     {
         $attributes = $request->validate([
+            'nombre' => 'required|string|max:255',
+            'dui' => 'required|numeric',
+            'position_id' => 'required|numeric|exists:positions,id',
+            'school_id' => 'required|numeric|exists:schools,id',
+            'state_id' => 'required|numeric|exists:states,id',
+/*
             'staff_id' => 'required|numeric|exists:staffs,id',
             'campo' => 'required|string|max:255',
-            'grado' => 'required|string|max:255',
+            'grado' => 'required|string|max:255',*/
         ]);
 
         Staff::create($attributes);

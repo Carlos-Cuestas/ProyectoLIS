@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\SchoolController;
 use App\Http\Controllers\StaffController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Validation\ValidationException;
 
@@ -67,4 +68,6 @@ Route::post('logout', function() {
 
 Route::resource('schools', SchoolController::class)->middleware('auth');
 Route::resource('staff', StaffController::class)->middleware('auth');
+Route::resource('users', UserController::class)->middleware('auth');
+Route::resource('roles', RoleController::class)->middleware('auth');
 
