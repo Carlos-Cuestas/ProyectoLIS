@@ -2,9 +2,8 @@ El Sistema de Administración de Centros Educativos (SCG), es la herramienta tec
 
 Herramientas:
 
--Visual Studio Code
--SQLyog
+-Visual Studio Code (Laravel)
 -SQLWorkBench
--WampServer
+-SQLserver
 
 Autor Carlos Manuel Cuestas Aguilar
