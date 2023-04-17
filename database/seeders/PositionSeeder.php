@@ -21,6 +21,7 @@ class PositionSeeder extends Seeder
             "Administracion",
             "Direccion"
         ];
+        
         Position::factory(count($position))->sequence(fn ($sqn) =>[
             "nombre" => $position[$sqn->index],
         ])->create();

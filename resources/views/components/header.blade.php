@@ -6,9 +6,10 @@
             @guest
                 <a class="nav-link" data-bs-toggle="modal" data-bs-target="#loginmodal" href="#"><img src="/img/web-10.png" alt="no logo" width="30px" height="35px"></a>
             @endguest
-            
+
             @auth
             <div style="display: flex;">
+                <p class=" text-white" style="padding: 3%;">{{ auth()->user()->role->type }}</p>
                 <p class=" text-white" style="padding: 3%;">{{ auth()->user()->role->type }}</p>
                 <p class=" text-white" style="padding: 3%;">{{ auth()->user()->name }}</p>
 

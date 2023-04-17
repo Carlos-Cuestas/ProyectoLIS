@@ -8,6 +8,7 @@
             <div class="container">
                 <div class="row align-items-center">
                     <div class="col">
+                        
                         <form action="{{ route('schools.update', $school->id) }}" method="POST">
                             @csrf
                             @method('PATCH')

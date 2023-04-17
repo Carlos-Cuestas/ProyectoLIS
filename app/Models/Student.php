@@ -10,11 +10,11 @@ class Student extends Model
     use HasFactory;
 
     public $timestamps = false;
+    protected $guarded=['id',];
 
     public function school(){
         return $this->belongsTo(School::class);
     }
-
     public function score(){
         return $this->hasMany(Score::class);
     }
