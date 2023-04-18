@@ -9,7 +9,12 @@
 
             @auth
             <div style="display: flex;">
-                <p class=" text-white" style="padding: 3%;">{{ auth()->user()->role->type }}</p>
+                @foreach (App\Models\Staff::all() as $usere)
+                    @if (auth()->user()->id == $usere->id)
+                    <p class=" text-white" style="padding: 3%;">{{ $usere->school->name }}</p>
+                    @endif
+                @endforeach
+
                 <p class=" text-white" style="padding: 3%;">{{ auth()->user()->role->type }}</p>
                 <p class=" text-white" style="padding: 3%;">{{ auth()->user()->name }}</p>
 
@@ -42,7 +47,7 @@
                 <div class="mb-3">
 
                   <label for="recipient-name" class="col-form-label">Usuario:</label>
-                  <x-input id="dui" placeholder="" value="930498281 574533917" class="form-control"/>
+                  <x-input id="dui" placeholder="" class="form-control"/>
                 </div>
 
                 <div class="mb-3">

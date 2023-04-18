@@ -48,12 +48,12 @@
         <x-menubutton src="/img/role.png" href="schools" mesaje="Roles" styler="padding:2%;"/>
         @endif
 
-        @if (auth()->user()->role_id == 3)
+        @if (auth()->user()->role_id == 3 || auth()->user()->role_id == 1)
         <x-menubutton src="/img/alumn.png" href="students" mesaje="Alumnos" styler="padding:2%;"/>
         @endif
 
 
-        <x-menubutton src="/img/proceso.png" href="schools" mesaje="Entrar" styler="padding:2%;"/>
+        <x-menubutton src="/img/notas.png" href="schools" mesaje="Notas" styler="padding:2%;"/>
 
         <x-menubutton src="/img/proceso.png" href="schools" mesaje="Mis Roles" styler="padding:2%;"/>
     </div>

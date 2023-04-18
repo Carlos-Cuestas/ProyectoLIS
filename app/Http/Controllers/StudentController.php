@@ -13,7 +13,7 @@ class StudentController extends Controller
     public function index()
     {
         return view('Students/index', [
-            'students' => Student::all()->load('school'),
+            'students' => Student::orderBy('id', 'desc')->get()->load('school'),
         ]);
     }
 
