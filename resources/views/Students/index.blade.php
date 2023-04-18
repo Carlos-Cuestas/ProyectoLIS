@@ -47,7 +47,7 @@
                 <td>{{ $student->grado }}</td>
                 <td>{{ $student->school->name}}</td>
                 @if (auth()->user()->role_id == 1)
-                <td><a href="{{ route('.edit', $student->id) }}"><img src="/img/edit.png" alt="editimg" height="25px" width="25px"></a></td>
+                <td><a href="{{ route('staff.edit', $student->id) }}"><img src="/img/edit.png" alt="editimg" height="25px" width="25px"></a></td>
                 @endif
             </tr>
             @else
