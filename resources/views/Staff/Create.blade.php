@@ -8,7 +8,7 @@
                 @csrf
                 @method('POST')
 
-                <x-input id="nombre"  placeholder="" value="">
+                <x-input id="name"  placeholder="" value="">
                     Nombre:
                 </x-input>
 
@@ -32,14 +32,13 @@
                   </select>
                   <br>
 
-                Posicion:
-                <select class="form-select" name="position_id">
-                    @foreach ($positions as $position)
-                    <option value="{{ $position->id }}">{{$position->nombre}}</option>
+                Rol:
+                <select class="form-select" name="role_id">
+                    @foreach ($roles as $role)
+                    <option value="{{ $role->id }}">{{$role->type}}</option>
                     @endforeach
                   </select>
                   <br>
-
                 <button type="submit">Mandar</button>
 
             </form>

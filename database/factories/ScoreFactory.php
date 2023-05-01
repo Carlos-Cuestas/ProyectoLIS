@@ -20,9 +20,9 @@ class ScoreFactory extends Factory
     {
         return [
             "student_id" =>Student::inRandomOrder()->limit(1)->first()->id,
-            "nota"=>fake()->numberBetween(0,10),
+            "note"=>fake()->numberBetween(0,10),
             "subject_id" =>Subject::inRandomOrder()->limit(1)->first()->id,
-            "ciclo"=>fake()->numberBetween(1,2),
+            "cycle"=>fake()->numberBetween(1,2),
         ];
     }
 }

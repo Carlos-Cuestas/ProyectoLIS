@@ -15,4 +15,16 @@ class Teacher extends Model
     public function staff(){
         return $this->belongsTo(Staff::class);
     }
+
+    public function grade(){
+        return $this->belongsTo(Grade::class);
+    }
+
+    public function section(){
+        return $this->belongsTo(Section::class);
+    }
+
+    public function subject(){
+        return $this->belongsTo(Subject::class);
+    }
 }

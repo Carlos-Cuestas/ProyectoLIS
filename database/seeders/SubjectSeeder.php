@@ -13,6 +13,19 @@ class SubjectSeeder extends Seeder
      */
     public function run(): void
     {
-        Subject::factory(4)->create();
+        $materias = [
+            "Matematicas",
+            "Quimica",
+            "Fisica",
+            "Español",
+            "Ciencias Sociales",
+            "Geografia",
+            "Literatura",
+            "Ingles",
+        ];
+
+        Subject::factory(count($materias))->sequence(fn ($sqn) =>[
+            "name" => $materias[$sqn->index],
+        ])->create();
     }
 }

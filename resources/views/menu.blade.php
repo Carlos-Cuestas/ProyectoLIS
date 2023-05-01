@@ -31,29 +31,37 @@
           cursor: pointer;
         }
       </style>
+
+      <!---
+/* //@if (auth()->user()->role_id == 1)
+//<x-menubutton src="/img/schoolicon.png" href="schools" mesaje="Escuelas" styler="padding:2%;"/>
+//@endif*/ --->
+
     <div id="container">
-        @if (auth()->user()->role_id == 1)
+
         <x-menubutton src="/img/schoolicon.png" href="schools" mesaje="Escuelas" styler="padding:2%;"/>
-        @endif
 
-        @if (auth()->user()->role_id == 1)
+
         <x-menubutton src="/img/persoico.png" href="staff" mesaje="Personal" styler="padding:2%;"/>
-        @endif
 
-        @if (auth()->user()->role_id == 1)
+
         <x-menubutton src="/img/useravatar.png" href="users" mesaje="Usuarios" styler="padding:2%;"/>
-        @endif
 
-        @if (auth()->user()->role_id == 1)
-        <x-menubutton src="/img/role.png" href="schools" mesaje="Roles" styler="padding:2%;"/>
-        @endif
 
-        @if (auth()->user()->role_id == 3 || auth()->user()->role_id == 1)
+        <x-menubutton src="/img/role.png" href="roles" mesaje="Roles" styler="padding:2%;"/>
+
+
         <x-menubutton src="/img/alumn.png" href="students" mesaje="Alumnos" styler="padding:2%;"/>
-        @endif
 
 
         <x-menubutton src="/img/notas.png" href="schools" mesaje="Notas" styler="padding:2%;"/>
+
+        <x-menubutton src="/img/perfilpro.png" href="schools" mesaje="Perfiles" styler="padding:2%;"/>
+
+        <x-menubutton src="/img/grupos.png" href="schools" mesaje="Secciones" styler="padding:2%;"/>
+        <x-menubutton src="/img/materias.png" href="schools" mesaje="Materias" styler="padding:2%;"/>
+        <x-menubutton src="/img/grados.png" href="schools" mesaje="Grados" styler="padding:2%;"/>
+        <x-menubutton src="/img/estados.png" href="schools" mesaje="Estados" styler="padding:2%;"/>
 
         <x-menubutton src="/img/proceso.png" href="schools" mesaje="Mis Roles" styler="padding:2%;"/>
     </div>

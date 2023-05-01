@@ -37,7 +37,7 @@ class UserController extends Controller
     {
         $attributes = $request->validate([
             'name' => 'required|string|max:255',
-            'dui' => 'required|string|max:255',
+            'dui' => 'required|numeric',
             'password' => 'required|string|max:255',
             'carnet' => 'required|string|max:255',
             'role_id' => 'required|numeric|exists:roles,id'
@@ -92,6 +92,7 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
-        //
+        $user->delete();
+        return back()->with('success','Borrado Correctamente');
     }
 }

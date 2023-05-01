@@ -21,10 +21,10 @@
             @foreach ($allstaff as $staff)
             <tr>
             <td>{{ $staff->dui}}</td>
-            <td>{{ $staff->nombre }}</td>
+            <td>{{ $staff->name }}</td>
             <td>{{ $staff->state->name }}</td>
             <td>{{ $staff->school->name }}</td>
-            <td>{{ $staff->position->nombre}}</td>
+            <td>{{ $staff->role->name}}</td>
             <td><a href="{{ route('staff.edit', $staff->id) }}"><img src="/img/edit.png" alt="editimg" height="25px" width="25px"></a></td>
             </tr>
             @endforeach

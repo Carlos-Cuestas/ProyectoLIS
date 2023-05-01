@@ -20,6 +20,7 @@
                 <th scope="col">Name</th>
                 <th scope="col">State</th>
                 <th scope="col">Edit</th>
+                <th scope="col">Eliminar</th>
               </tr>
             </thead>
             <tbody class="table-secondary">
@@ -28,7 +29,14 @@
                 <td>{{ $school->name }}</td>
                 <td>{{ $school->state->name }}</td>
                 <td><a href="{{ route('schools.edit', $school->id) }}"><img src="/img/edit.png" alt="editimg" height="25px" width="25px"></a></td>
-                </tr>
+                <form action="{{ route('schools.destroy', $school->id) }}" method="POST" style="display: inline-block;">
+                    @csrf
+                    @method('DELETE')
+
+                    <td><button type="submit" class="btn btn-danger" height="25px" width="25px"><i class="bi bi-trash3"></i></button></td>
+
+                </form>
+            </tr>
                 @endforeach
             </tbody>
 

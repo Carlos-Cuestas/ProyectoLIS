@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Position;
+use App\Models\Role;
 use App\Models\School;
 use App\Models\Staff;
 use App\Models\State;
@@ -15,9 +16,11 @@ class StaffController extends Controller
      */
     public function index()
     {
+
         return view('Staff/index', [
             'allstaff' => Staff::all()->load('teacher'),
         ]);
+
     }
 
     /**
@@ -26,9 +29,9 @@ class StaffController extends Controller
     public function create()
     {
         return view('Staff/Create', [
-            'schools' => School::all(),
-            'positions' => Position::all(),
-            'states' => State::all(),
+            'roles'=> Role::all(),
+            'states'=> State::all(),
+            'schools'=> School::all(),
         ]);
     }
 
@@ -37,21 +40,18 @@ class StaffController extends Controller
      */
     public function store(Request $request)
     {
+        
         $attributes = $request->validate([
-            'nombre' => 'required|string|max:255',
-            'dui' => 'required|numeric',
-            'position_id' => 'required|numeric|exists:positions,id',
-            'school_id' => 'required|numeric|exists:schools,id',
             'state_id' => 'required|numeric|exists:states,id',
-/*
-            'staff_id' => 'required|numeric|exists:staffs,id',
-            'campo' => 'required|string|max:255',
-            'grado' => 'required|string|max:255',*/
+            'school_id' => 'required|numeric|exists:schools,id',
+            'role_id' => 'required|numeric|exists:roles,id',
+            'dui' => 'required|numeric',
+            'name' => 'required|string|max:255',
         ]);
 
         Staff::create($attributes);
 
-        return back()->with('success', 'School created successfully');
+        return back()->with('success', 'Staff created successfully');
     }
 
     /**
@@ -69,7 +69,7 @@ class StaffController extends Controller
     {
         return view('Staff/Edit', [
             'staff' => $staff,
-            'positions'=> Position::all(),
+            'roles'=> Role::all(),
             'states'=> State::all(),
             'schools'=> School::all(),
         ]);
@@ -83,31 +83,15 @@ class StaffController extends Controller
         $attributes = $request->validate([
             'state_id' => 'required|numeric|exists:states,id',
             'school_id' => 'required|numeric|exists:schools,id',
-            'position_id' => 'required|numeric|exists:positions,id',
+            'role_id' => 'required|numeric|exists:roles,id',
             'dui' => 'required|numeric',
-            'nombre' => 'required|string|max:255',
+            'name' => 'required|string|max:255',
         ]);
 
         $staff->fill($attributes);
         $staff->save();
 
-        if($staff->teacher != null ){
-            $teacheratributes = $request->validate([
-                'campo' => 'required|string|max:255',
-                'grado' => 'required|string|max:255',
-            ]);
-
-            /*$teacher = $staff->teacher;
-            $teacher->campo = $teacheratributes['campo'];
-            $teacher->grado = $teacheratributes['grado'];
-            $teacher->save();*/
-
-            $staff->teacher->fill($teacheratributes)->save();
-        }
-
-
-
-        return back()->with('success', 'Teacher updated successfully');
+        return back()->with('success', 'Staff updated successfully');
     }
 
     /**

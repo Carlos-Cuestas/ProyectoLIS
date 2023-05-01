@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Position;
+use App\Models\Role;
 use App\Models\School;
 use App\Models\State;
 use Illuminate\Database\Migrations\Migration;
@@ -16,11 +17,11 @@ return new class extends Migration
     {
         Schema::create('staff', function (Blueprint $table) {
             $table->id();
-            $table->string("dui");
-            $table->string("nombre");
+            $table->string("dui")->unique();
+            $table->string("name");
             $table->foreignIdFor(State::class)->constrained();
             $table->foreignIdFor(School::class)->constrained();
-            $table->foreignIdFor(Position::class)->constrained();
+            $table->foreignIdFor(Role::class)->constrained();
         });
     }
 

@@ -10,9 +10,13 @@ class Role extends Model
     use HasFactory;
 
     public $timestamps = false;
-
+    protected $guarded=['id',];
     public function users(){
         return $this->hasMany(User::class);
+    }
+
+    public function staff(){
+        return $this->hasMany(Staff::class);
     }
 }
 

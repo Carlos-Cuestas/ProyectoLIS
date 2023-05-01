@@ -4,6 +4,8 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
+
+use Database\Seeders\SectionSeeder;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -26,11 +28,12 @@ class DatabaseSeeder extends Seeder
             SchoolSeeder::class,
             PositionSeeder::class,
             StaffSeeder::class,
-            TeacherSeeder::class,
             SubjectSeeder::class,
+            SectionSeeder::class,
+            GradeSeeder::class,
+            TeacherSeeder::class,
             StudentSeeder::class,
             ScoreSeeder::class,
-            StudentSeeder::class,
         ]);
     }
 }

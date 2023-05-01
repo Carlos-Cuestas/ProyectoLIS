@@ -14,9 +14,6 @@ class TeacherSeeder extends Seeder
      */
     public function run(): void
     {
-        $profes = Staff::where("position_id", 2)->get();
-        Teacher::factory(count($profes))->sequence(fn ($sqn)=>[
-            "staff_id" => $profes[$sqn->index]->id
-        ])->create();
+        Teacher::factory(5)->create();
     }
 }

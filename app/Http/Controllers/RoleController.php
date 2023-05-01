@@ -23,7 +23,7 @@ class RoleController extends Controller
     public function create()
     {
         return view('Roles/Create',[
-            
+
         ]);
     }
 
@@ -32,7 +32,13 @@ class RoleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $attributes = $request->validate([
+            'type' => 'required|string|max:255',
+        ]);
+
+        Role::create($attributes);
+
+        return back()->with('success', 'Role created successfully');
     }
 
     /**
@@ -65,7 +71,7 @@ class RoleController extends Controller
         $role->fill($attributes);
         $role->save();
 
-        return back();
+        return back()->with('success','Editado Correctamente');
     }
 
     /**
@@ -73,6 +79,7 @@ class RoleController extends Controller
      */
     public function destroy(Role $role)
     {
-        //
+        $role->delete();
+        return back()->with('success','Borrado Correctamente');
     }
 }

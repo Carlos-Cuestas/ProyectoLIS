@@ -16,7 +16,9 @@ class RoleSeeder extends Seeder
     public function run(): void
     {
         $roles = [
-            "Administrador", "Director", "Profesor","Secretaria"
+            "Administrador",
+            "Director",
+            "Profesor"
         ];
 
         Role::factory(count($roles))->sequence(fn ($sqn) => [

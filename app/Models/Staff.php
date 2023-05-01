@@ -10,7 +10,10 @@ class Staff extends Model
     use HasFactory;
     public $timestamps = false;
 
-    protected $guarded = ['id',];
+    protected $guarded = [
+        'id'
+    ];
+    
     public function state(){
         return $this->belongsTo(State::class);
     }
@@ -19,11 +22,11 @@ class Staff extends Model
         return $this->belongsTo(School::class);
     }
 
+    public function role(){
+        return $this->belongsTo(Role::class);
+    }
     public function teacher(){
-        return $this->hasOne(Teacher::class);
+        return $this->hasMany(Teacher::class);
     }
 
-    public function position(){
-        return $this->belongsTo(Position::class);
-    }
 }

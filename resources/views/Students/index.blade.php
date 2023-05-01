@@ -2,7 +2,7 @@
     <x-header/>
 
 <main style="display: flex;">
-    <x-sidemenu controller="staff"/>
+    <x-sidemenu controller="students"/>
 
     <section>
 
@@ -26,49 +26,34 @@
             <th scope="col">Nombre</th>
             <th scope="col">Genero</th>
             <th scope="col">Grado</th>
+            <th scope="col">Seccion</th>
             <th scope="col">Escuela</th>
-            @if (auth()->user()->role_id == 1)
             <th scope="col">Editar</th>
-            @endif
-
+            <th scope="col">Eliminar</th>
           </tr>
         </thead>
         <tbody>
 
-                @foreach (App\Models\Staff::all() as $usere)
-                    @if (auth()->user()->dui == $usere->dui)
 
             @foreach ($students as $student)
-            @if (auth()->user()->role->type=="Administrador")
             <tr>
                 <td>{{ $student->carnet}}</td>
-                <td>{{ $student->nombre }}</td>
-                <td>{{ $student->genero }}</td>
-                <td>{{ $student->grado }}</td>
+                <td>{{ $student->name }}</td>
+                <td>{{ $student->gender }}</td>
+                <td>{{ $student->grade->name }}</td>
+                <td>{{ $student->section->name }}</td>
                 <td>{{ $student->school->name}}</td>
-                @if (auth()->user()->role_id == 1)
-                <td><a href="{{ route('staff.edit', $student->id) }}"><img src="/img/edit.png" alt="editimg" height="25px" width="25px"></a></td>
-                @endif
+                <td><a href="{{ route('students.edit', $student->id) }}"><img src="/img/edit.png" alt="editimg" height="25px" width="25px"></a></td>
+
+                <form action="{{ route('students.destroy', $student->id) }}" method="POST" style="display: inline-block;">
+                    @csrf
+                    @method('DELETE')
+
+                    <td><button type="submit" class="btn btn-danger" height="25px" width="25px"><i class="bi bi-trash3"></i></button></td>
+
+                </form>
+
             </tr>
-            @else
-            @if ($student->school_id==$usere->school_id)
-            <tr>
-                <td>{{ $student->carnet}}</td>
-                <td>{{ $student->nombre }}</td>
-                <td>{{ $student->genero }}</td>
-                <td>{{ $student->grado }}</td>
-                <td>{{ $student->school->name}}</td>
-                @if (auth()->user()->role_id == 1)
-                <td><a href="{{ route('staff.edit', $student->id) }}"><img src="/img/edit.png" alt="editimg" height="25px" width="25px"></a></td>
-                @endif
-            </tr>
-            @endif
-            @endif
-
-
-            @endforeach
-
-            @endif
             @endforeach
         </tbody>
       </table>

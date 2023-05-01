@@ -1,6 +1,9 @@
 <?php
 
+use App\Models\Grade;
+use App\Models\Section;
 use App\Models\Staff;
+use App\Models\Subject;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -15,8 +18,9 @@ return new class extends Migration
         Schema::create('teachers', function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(Staff::class)->constrained();
-            $table->string("campo");
-            $table->string("grado");
+            $table->foreignIdFor(Grade::class)->constrained();
+            $table->foreignIdFor(Subject::class)->constrained();
+            $table->foreignIdFor(Section::class)->constrained();
         });
     }
 

@@ -2,7 +2,9 @@
 
 namespace Database\Factories;
 
+use App\Models\Grade;
 use App\Models\School;
+use App\Models\Section;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,12 +19,15 @@ class StudentFactory extends Factory
      */
     public function definition(): array
     {
+        $currentYear = date('Y');
+        $carnet = "EE{$currentYear}".fake()->unique()->word();
 
         return [
-            "nombre" => fake()->name(),
-            "grado" => fake()->numberBetween(),
-            "carnet" => fake()->word(),
-            "genero" => fake()->randomElement(["H","M"]),
+            "name" => fake()->name(),
+            "carnet" => $carnet,
+            "gender" => fake()->randomElement(["H","M"]),
+            "section_id" => Section::inRandomOrder()->limit(1)->first()->id,
+            "grade_id" => Grade::inRandomOrder()->limit(1)->first()->id,
             "school_id" => School::inRandomOrder()->limit(1)->first()->id,
         ];
     }

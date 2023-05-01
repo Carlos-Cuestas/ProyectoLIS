@@ -11,7 +11,7 @@
                 Dui:
             </x-input>
 
-            <x-input id="nombre" placeholder="" value="{{ $staff->nombre }}">
+            <x-input id="name" placeholder="" value="{{ $staff->name}}">
                 Nombre:
             </x-input>
 
@@ -29,20 +29,12 @@
                 @endforeach
               </select>
 
-            Puesto:
-            <select class="form-select" name="position_id">
-                @foreach ($positions as $position)
-                <option value="{{ $position->id }}" {!! $staff->position_id == $position->id ? 'selected' : '' !!}>{{ $position->nombre }}</option>
+            Rol:
+            <select class="form-select" name="role_id">
+                @foreach ($roles as $role)
+                <option value="{{ $role->id }}" {!! $staff->role_id == $role->id ? 'selected' : '' !!}>{{ $role->type }}</option>
                 @endforeach
               </select>
-
-              @if ($staff->teacher != null)
-              <x-input id="campo" placeholder="" value="{{$staff->teacher->campo}}">Campo
-            </x-input>
-            <x-input id="grado" placeholder="" value="{{$staff->teacher->grado}}">Grado
-            </x-input>
-              @endif
-
 
 
               <br>

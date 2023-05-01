@@ -47,12 +47,12 @@
                 <div class="mb-3">
 
                   <label for="recipient-name" class="col-form-label">Usuario:</label>
-                  <x-input id="dui" placeholder="" class="form-control"/>
+                  <x-input id="dui" placeholder="" class="form-control" value="1401200200567"/>
                 </div>
 
                 <div class="mb-3">
                   <label for="recipient-name" class="col-form-label">Contrasenia:</label>
-                  <x-input id="password" placeholder="password" type="password" value="password" class="form-control"/>
+                  <x-input id="password" placeholder="password" type="password" value="Carlo100" class="form-control"/>
                 </div>
               </form>
             </div>

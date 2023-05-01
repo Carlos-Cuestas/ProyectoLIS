@@ -2,7 +2,10 @@
 
 namespace Database\Factories;
 
+use App\Models\Grade;
+use App\Models\Section;
 use App\Models\Staff;
+use App\Models\Subject;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -19,8 +22,9 @@ class TeacherFactory extends Factory
     {
         return [
             "staff_id" => Staff::inRandomOrder()->limit(1)->first()->id,
-            "campo" => fake()->word(),
-            "grado" => fake()->word() . " " . fake()->numberBetween(1,12),
+            "subject_id" => Subject::inRandomOrder()->limit(1)->first()->id,
+            "grade_id" => Grade::inRandomOrder()->limit(1)->first()->id,
+            "section_id" => Section::inRandomOrder()->limit(1)->first()->id,
         ];
     }
 }

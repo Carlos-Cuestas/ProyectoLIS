@@ -3,8 +3,10 @@
 namespace Database\Factories;
 
 use App\Models\Position;
+use App\Models\Role;
 use App\Models\School;
 use App\Models\State;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -19,19 +21,14 @@ class StaffFactory extends Factory
      */
     public function definition(): array
     {
-        return [
-            "dui" => function (){
-                $values = "";
-                for ($i = 1; $i <= 9; $i++) {
-                $values .= fake()->randomDigit();
-                }
-            return $values;
-            },
+        $user = User::inRandomOrder()->limit(1)->first();
 
-            "nombre" => fake()->name(),
-            "state_id" => State::inRandomOrder()->limit(1)->first()->id,
-            "school_id" => School::inRandomOrder()->limit(1)->first()->id,
-            "position_id" => Position::inRandomOrder()->limit(1)->first()->id,
-        ];
+    return [
+        "dui" => $user->dui,
+        "name" => fake()->name(),
+        "state_id" => State::inRandomOrder()->limit(1)->first()->id,
+        "school_id" => School::inRandomOrder()->limit(1)->first()->id,
+        "role_id" => Role::inRandomOrder()->limit(1)->first()->id,
+    ];
     }
 }

@@ -85,6 +85,7 @@ class SchoolController extends Controller
      */
     public function destroy(School $school)
     {
-        //
+        $school->delete();
+        return back()->with('success','Borrado Correctamente');
     }
 }
