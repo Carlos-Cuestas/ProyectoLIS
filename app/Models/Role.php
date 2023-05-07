@@ -11,12 +11,9 @@ class Role extends Model
 
     public $timestamps = false;
     protected $guarded=['id',];
-    public function users(){
-        return $this->hasMany(User::class);
-    }
 
-    public function staff(){
-        return $this->hasMany(Staff::class);
+    public function user(){
+        return $this->hasMany(User::class);
     }
 }
 

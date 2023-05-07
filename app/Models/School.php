@@ -20,15 +20,13 @@ class School extends Model
         return $this->belongsTo(State::class);
     }
 
-    public function staff(){
-        return $this->hasMany(Staff::class);
+    public function user(){
+        return $this->hasMany(User::class);
     }
 
     public function student(){
         return $this->hasMany(Student::class);
     }
 
-    public function user(){
-        return $this->hasMany(Student::class);
-    }
+
 }

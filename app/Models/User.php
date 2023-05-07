@@ -24,7 +24,9 @@ class User extends Authenticatable
         'email',
         'carnet',
         'password',
-        'role_id'
+        'role_id',
+        'state_id',
+        'school_id',
     ];
 
     /**
@@ -48,6 +50,17 @@ class User extends Authenticatable
 
     public function role(){
         return $this->belongsTo(Role::class);
+    }
+    public function state(){
+        return $this->belongsTo(State::class);
+    }
+
+    public function school(){
+        return $this->belongsTo(School::class);
+    }
+
+    public function teacher(){
+        return $this->hasMany(Teacher::class);
     }
 
     public function setPasswordAttribute($password)

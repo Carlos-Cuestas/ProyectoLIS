@@ -3,6 +3,8 @@
 namespace Database\Factories;
 
 use App\Models\Role;
+use App\Models\School;
+use App\Models\State;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 
@@ -30,6 +32,8 @@ class UserFactory extends Factory
             },
 
             'role_id' => Role::inRandomOrder()->limit(1)->first()->id,
+            "state_id" => State::inRandomOrder()->limit(1)->first()->id,
+            "school_id" => School::inRandomOrder()->limit(1)->first()->id,
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
             "carnet" => fake()->word(),
             'remember_token' => Str::random(10),
