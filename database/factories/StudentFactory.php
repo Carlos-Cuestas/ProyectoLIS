@@ -20,7 +20,7 @@ class StudentFactory extends Factory
     public function definition(): array
     {
         $currentYear = date('Y');
-        $carnet = "EE{$currentYear}".fake()->unique()->word();
+        $carnet = "EE{$currentYear}".fake()->word().fake()->unique()->randomNumber();
 
         return [
             "name" => fake()->name(),

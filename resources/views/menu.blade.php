@@ -42,9 +42,6 @@
         <x-menubutton src="/img/schoolicon.png" href="schools" mesaje="Escuelas" styler="padding:2%;"/>
 
 
-        <x-menubutton src="/img/persoico.png" href="staff" mesaje="Personal" styler="padding:2%;"/>
-
-
         <x-menubutton src="/img/useravatar.png" href="users" mesaje="Usuarios" styler="padding:2%;"/>
 
 

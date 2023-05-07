@@ -1,11 +1,5 @@
 <x-base>
     <h1>Seleccione Grupo</h1>
-    @foreach ($staff as $dato3)
-        @if (Auth::user()->dui == $dato3->dui)
-            {{$dato3->name}}
-            {{$dato3->school->name}}
-        @endif
-    @endforeach
 
     <table class="table">
         <thead>
@@ -21,47 +15,36 @@
         </thead>
         <tbody>
 
-            @foreach ($scores as $dato)
+            @foreach ($subjects as $subject)
+                @foreach ($students as $student)
 
-            @foreach ($students as $dato2)
 
-            @foreach ($staff as $dato3)
-                @if (Auth::user()->dui == $dato3->dui)
-                    @if ($dato2->school->name == $dato3->school->name)
-
-                    @if ($dato->student->school->name == $dato3->school->name)
                     <tr>
                         <th>
-                            {{$dato->student->name}}
+                            {{$student->name}}
                         </th>
 
                         <th>
-                            {{$dato->student->section->name}}
+                            {{$student->section->name}}
                         </th>
                         <th>
-                            {{$dato->student->grade->name}}
+                            {{$student->grade->name}}
                         </th>
                         <th>
-                            {{$dato->subject->name}}
+                            {{$subject}}
                         </th>
                         <th>
-                            {{$dato->cycle}}
+                            {{$student->cycle}}
                         </th>
                         <th>
-                            {{$dato->note}}
+                            {{$student->note}}
                         </th>
                         <th>
-                            {{$dato->student->school->name}}
+                            {{$student->school->name}}
                         </th>
                     </tr>
-                    @endif
 
-
-                    @endif
-                @endif
-            @endforeach
-
-            @endforeach
+                @endforeach
 
             @endforeach
         </tbody>

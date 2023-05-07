@@ -12,10 +12,6 @@ class Teacher extends Model
     public $timestamps = false;
     protected $guarded=['id',];
 
-    public function staff(){
-        return $this->belongsTo(Staff::class);
-    }
-
     public function grade(){
         return $this->belongsTo(Grade::class);
     }

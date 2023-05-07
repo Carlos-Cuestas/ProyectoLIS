@@ -24,7 +24,7 @@ class Student extends Model
     public function section(){
         return $this->belongsTo(Section::class);
     }
-    public function score(){
+    public function scores(){
         return $this->hasMany(Score::class);
     }
 }

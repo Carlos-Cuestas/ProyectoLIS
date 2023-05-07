@@ -7,7 +7,6 @@
             <br><br><br><br><br><br>
 
             <h3 class="text-white">Bienvenido a SCG</h1>
-                <h1>{{$errors}}</h1>
             <h1 class="text-white ">Sistema Control Gestion</h1>
             <br><br>
 

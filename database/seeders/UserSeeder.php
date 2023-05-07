@@ -14,5 +14,8 @@ class UserSeeder extends Seeder
     public function run(): void
     {
         User::factory(10)->create();
+        User::factory()->create([
+            'dui' => '1401200200567'
+        ]);
     }
 }

@@ -9,6 +9,7 @@ use App\Models\Staff;
 use App\Models\Student;
 use App\Models\Subject;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ScoreController extends Controller
 {
@@ -17,13 +18,15 @@ class ScoreController extends Controller
      */
     public function index()
     {
+        $techer = Auth::user()->teacher;
+        
         return view('Scores/Index',[
-            'staff' => Staff::all(),
             'schools' =>School::all(),
-            'students' => Student::all(),
-            'subjects' => Subject::all(),
-            'scores' => Score::all(),
+            'students' => Student::where('grade_id', $techer->grade_id)
+            ->where('section_id', $techer->section_id)->get(),
+            'subjects' => $techer->subject,
         ]);
+
     }
 
     /**

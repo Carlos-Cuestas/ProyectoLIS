@@ -52,6 +52,7 @@ Route::post('login', function() {
     ]);
 
     if (!auth()->attempt($attributes, false)) {
+
         throw ValidationException::withMessages([
             'dui' => 'Credentials are incorrect',
         ]);
@@ -70,7 +71,6 @@ Route::post('logout', function() {
 })->middleware('auth')->name('session.logout');
 
 Route::resource('schools', SchoolController::class)->middleware('auth');
-Route::resource('staff', StaffController::class)->middleware('auth');
 Route::resource('users', UserController::class)->middleware('auth');
 Route::resource('roles', RoleController::class)->middleware('auth');
 Route::resource('students', StudentController::class)->middleware('auth');
