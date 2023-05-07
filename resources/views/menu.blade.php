@@ -54,7 +54,7 @@
         <x-menubutton src="/img/alumn.png" href="students" mesaje="Alumnos" styler="padding:2%;"/>
 
 
-        <x-menubutton src="/img/notas.png" href="schools" mesaje="Notas" styler="padding:2%;"/>
+        <x-menubutton src="/img/notas.png" href="scores" mesaje="Notas" styler="padding:2%;"/>
 
         <x-menubutton src="/img/perfilpro.png" href="schools" mesaje="Perfiles" styler="padding:2%;"/>
 

@@ -13,6 +13,6 @@ class ScoreSeeder extends Seeder
      */
     public function run(): void
     {
-        Score::factory()->create();
+        Score::factory(50)->create();
     }
 }

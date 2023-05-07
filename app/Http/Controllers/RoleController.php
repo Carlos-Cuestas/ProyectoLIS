@@ -15,6 +15,7 @@ class RoleController extends Controller
         return view('Roles/Index',[
             'roles' => Role::all(),
         ]);
+
     }
 
     /**
