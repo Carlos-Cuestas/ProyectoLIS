@@ -22,7 +22,7 @@ class ScoreFactory extends Factory
             "student_id" =>Student::inRandomOrder()->limit(1)->first()->id,
             "note"=>fake()->numberBetween(0,10),
             "subject_id" =>Subject::inRandomOrder()->limit(1)->first()->id,
-            "cycle"=>fake()->numberBetween(1,2),
+            "cycle_id" => fake()->numberBetween(1,2),
         ];
     }
 }

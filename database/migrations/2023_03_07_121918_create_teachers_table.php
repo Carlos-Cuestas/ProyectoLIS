@@ -21,7 +21,6 @@ return new class extends Migration
             $table->foreignIdFor(User::class)->constrained();
             $table->foreignIdFor(Grade::class)->constrained();
             $table->foreignIdFor(Subject::class)->constrained();
-            $table->foreignIdFor(Section::class)->constrained();
         });
     }
 

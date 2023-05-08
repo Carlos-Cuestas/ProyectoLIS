@@ -74,5 +74,5 @@ Route::resource('schools', SchoolController::class)->middleware('auth');
 Route::resource('users', UserController::class)->middleware('auth');
 Route::resource('roles', RoleController::class)->middleware('auth');
 Route::resource('students', StudentController::class)->middleware('auth');
-Route::resource('scores', ScoreController::class)->middleware('auth');
-
+Route::get('scores', [ScoreController::class, 'index'])->middleware('auth');
+Route::post('scores', [ScoreController::class, 'update'])->name('scores.update')->middleware('auth');

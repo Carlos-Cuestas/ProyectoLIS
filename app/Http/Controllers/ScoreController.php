@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Cycle;
 use App\Models\School;
 use App\Models\Score;
 use App\Models\Section;
-use App\Models\Staff;
 use App\Models\Student;
 use App\Models\Subject;
 use Illuminate\Http\Request;
@@ -18,62 +18,58 @@ class ScoreController extends Controller
      */
     public function index()
     {
-        $techer = Auth::user()->teacher;
-        
+        $section = Section::where('id', \request('seccion') ?? 1)->first();
+        $ciclo = \request('ciclo') ?? 1;
+        $teacher = Auth::user()->teacher;
+        $students = Student::where('grade_id', $teacher->grade_id)
+            ->where('section_id', $section->id)
+            ->where('school_id', Auth::user()->school_id)->with(['scores'])->get();
+
+        foreach ($students as $student) {
+            if ($student->scores()->where('subject_id', $teacher->subject->id)->where('cycle_id', $ciclo)->first() == null) {
+                Score::create([
+                    'student_id' => $student->id,
+                    'note' => 0,
+                    'subject_id' => $teacher->subject->id,
+                    'cycle_id' => $ciclo
+                ]);
+            }
+        }
+
         return view('Scores/Index',[
-            'schools' =>School::all(),
-            'students' => Student::where('grade_id', $techer->grade_id)
-            ->where('section_id', $techer->section_id)->get(),
-            'subjects' => $techer->subject,
+            'students' => $students,
+            'teacher' => $teacher,
+            'ciclo' => $ciclo,
+            'ciclos' => Cycle::all(),
+            'seccion' => $section,
+            'secciones' => Section::all(),
         ]);
 
     }
 
     /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(Score $score)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Score $score)
-    {
-        //
-    }
-
-    /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Score $score)
+    public function update(Request $request)
     {
-        //
-    }
+        $scores = collect([]);
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Score $score)
-    {
-        //
+        //dd($request->post());
+        foreach ($request->post() as $scoreID => $score) {
+            if ($scoreID == '_token') {
+                continue;
+            }
+            $scores->push([
+                'id' => $scoreID,
+                'note' => $score,
+                'student_id' => 0,
+                'subject_id' => 0,
+                'cycle_id' => 0,
+            ]);
+        }
+
+        Score::upsert($scores->toArray(), ['id'], ['note']);
+
+        return back();
     }
 }

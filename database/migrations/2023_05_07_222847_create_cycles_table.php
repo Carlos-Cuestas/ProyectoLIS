@@ -1,7 +1,5 @@
 <?php
 
-use App\Models\Student;
-use App\Models\Subject;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -13,12 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('scores', function (Blueprint $table) {
+        Schema::create('cycles', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(Student::class)->constrained();
-            $table->double("note");
-            $table->foreignIdFor(Subject::class)->constrained();
-            $table->foreignIdFor(\App\Models\Cycle::class);
+            $table->integer('number');
+            $table->timestamps();
         });
     }
 
@@ -27,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('scores');
+        Schema::dropIfExists('cycles');
     }
 };

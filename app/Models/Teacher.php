@@ -16,10 +16,6 @@ class Teacher extends Model
         return $this->belongsTo(Grade::class);
     }
 
-    public function section(){
-        return $this->belongsTo(Section::class);
-    }
-
     public function subject(){
         return $this->belongsTo(Subject::class);
     }
