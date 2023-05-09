@@ -37,7 +37,7 @@
 //<x-menubutton src="/img/schoolicon.png" href="schools" mesaje="Escuelas" styler="padding:2%;"/>
 //@endif*/ --->
 
-    <div id="container">
+    <div id="container" class="container" style="width: 68rem;">
 
 
         @if (Auth::user()->role_id == 1)

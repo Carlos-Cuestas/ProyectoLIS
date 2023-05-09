@@ -33,6 +33,8 @@
               </div>
             </div>
 
+
+
             <div class="col-sm-8">
               <div class="card bg-transparent border-0 container">
                 <div class="card-body">
@@ -41,8 +43,11 @@
               </div>
             </div>
           </div>
+
+
           <x-flashmessage/>
     @else
+
         {{ $slot }}
 
     @endif
