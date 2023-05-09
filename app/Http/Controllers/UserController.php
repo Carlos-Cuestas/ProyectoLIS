@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Role;
+use App\Models\School;
+use App\Models\State;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -16,7 +18,6 @@ class UserController extends Controller
     {
         return view('Users/Index',[
             'users' => User::all()->load('role'),
-
         ]);
     }
 
@@ -27,6 +28,8 @@ class UserController extends Controller
     {
         return view('Users/Create',[
             'roles' => Role::all(),
+            'states' => State::all(),
+            'schools' => School::all(),
         ]);
     }
 
@@ -40,7 +43,9 @@ class UserController extends Controller
             'dui' => 'required|numeric',
             'password' => 'required|string|max:255',
             'carnet' => 'required|string|max:255',
-            'role_id' => 'required|numeric|exists:roles,id'
+            'role_id' => 'required|numeric|exists:roles,id',
+            'school_id' => 'required|numeric|exists:schools,id',
+            'state_id' => 'required|numeric|exists:states,id'
         ]);
 
         User::create($attributes);
@@ -64,6 +69,8 @@ class UserController extends Controller
         return view('Users/Edit', [
             'user' => $user,
             'roles'=> Role::all(),
+            'states' => State::all(),
+            'schools' => School::all(),
 
         ]);
     }
@@ -73,12 +80,14 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
+        
         $attributes = $request->validate([
             'name' => 'required|string|max:255',
+            'dui' => 'required|numeric',
             'carnet' => 'required|string|max:255',
-            'dui' => 'required',
             'role_id' => 'required|numeric|exists:roles,id',
-
+            'school_id' => 'required|numeric|exists:schools,id',
+            'state_id' => 'required|numeric|exists:states,id'
         ]);
 
         $user->fill($attributes);

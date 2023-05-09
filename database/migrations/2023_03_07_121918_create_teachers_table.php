@@ -18,7 +18,7 @@ return new class extends Migration
     {
         Schema::create('teachers', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(User::class)->constrained();
+            $table->foreignIdFor(User::class)->unique()->constrained();
             $table->foreignIdFor(Grade::class)->constrained();
             $table->foreignIdFor(Subject::class)->constrained();
         });

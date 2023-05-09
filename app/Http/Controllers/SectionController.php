@@ -2,20 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Role;
+use App\Models\Section;
 use Illuminate\Http\Request;
 
-class RoleController extends Controller
+class SectionController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return view('Roles/Index',[
-            'roles' => Role::all(),
+        return view('Sections/index',[
+            'sections'=> Section::all(),
         ]);
-
     }
 
     /**
@@ -23,8 +22,7 @@ class RoleController extends Controller
      */
     public function create()
     {
-        return view('Roles/Create',[
-
+        return view('Sections/create',[
         ]);
     }
 
@@ -34,18 +32,17 @@ class RoleController extends Controller
     public function store(Request $request)
     {
         $attributes = $request->validate([
-            'type' => 'required|string|max:255',
+            'name' => 'required|string|max:255',
         ]);
 
-        Role::create($attributes);
-
-        return back()->with('success', 'Rol Creado Correctamente');
+        Section::create($attributes);
+        return back()->with('success','Seccion Creada Correctamente');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Role $role)
+    public function show(Section $section)
     {
         //
     }
@@ -53,24 +50,24 @@ class RoleController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Role $role)
+    public function edit(Section $section)
     {
-        return view('Roles/Edit', [
-            'role' =>$role,
+        return view('Sections/Edit', [
+            'section' => $section,
+
         ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Role $role)
+    public function update(Request $request, Section $section)
     {
         $attributes = $request->validate([
-            'type' => 'required|string|max:255',
+            'name' => 'required|string|max:255'
         ]);
-
-        $role->fill($attributes);
-        $role->save();
+        $section ->fill($attributes);
+        $section->save();
 
         return back()->with('success','Editado Correctamente');
     }
@@ -78,9 +75,9 @@ class RoleController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Role $role)
+    public function destroy(Section $section)
     {
-        $role->delete();
+        $section->delete();
         return back()->with('success','Borrado Correctamente');
     }
 }

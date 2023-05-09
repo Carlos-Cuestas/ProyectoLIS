@@ -10,9 +10,9 @@
             @auth
             <div style="display: flex;">
 
-
-                <p class=" text-white" style="padding: 3%;">{{ auth()->user()->role->type }}</p>
-                <p class=" text-white" style="padding: 3%;">{{ auth()->user()->name }}</p>
+                <p class="fw-bold text-white" style="padding: 3%;">{{ auth()->user()->school->name }}</p>
+                <p class="fw-bold text-white" style="padding: 3%;">{{ auth()->user()->role->type }}</p>
+                <p class="fw-bold text-white" style="padding: 3%;">{{ auth()->user()->name }}</p>
 
             <form class="nav-link" action="{{ route('session.logout') }}" method="POST">
                 @csrf

@@ -1,17 +1,14 @@
-<x-base>
-    <x-header/>
-    <main style="display: flex;">
-        <x-sidemenu controller="students"/>
-
+<x-base tipo="students">
+    <div class="card border-1" style="width: 28rem;padding: 4%;">
         <form action="{{ route('students.update', $student->id) }}" method="POST">
             @csrf
             @method('PATCH')
 
-            <x-input id="carnet" placeholder="" value="{{$student->carnet}}">
+            <x-input id="carnet" placeholder="" value="{{ $student->carnet }}">
                 Carnet:
             </x-input>
 
-            <x-input id="name" placeholder="" value="{{$student->name}}">
+            <x-input id="name" placeholder="" value="{{ $student->name }}">
                 Nombre:
             </x-input>
 
@@ -25,31 +22,30 @@
             Grado:
             <select class="form-select" name="grade_id">
                 @foreach ($grades as $dato)
-                <option value="{{ $dato->id }}" {!! $student->grade_id == $dato->id ? 'selected' : '' !!}>{{ $dato->name }}</option>
+                    <option value="{{ $dato->id }}" {!! $student->grade_id == $dato->id ? 'selected' : '' !!}>{{ $dato->name }}</option>
                 @endforeach
             </select>
 
             Grado:
             <select class="form-select" name="section_id">
                 @foreach ($sections as $dato)
-                <option value="{{ $dato->id }}" {!! $student->section_id == $dato->id ? 'selected' : '' !!}>{{ $dato->name }}</option>
+                    <option value="{{ $dato->id }}" {!! $student->section_id == $dato->id ? 'selected' : '' !!}>{{ $dato->name }}</option>
                 @endforeach
             </select>
 
             Escuela:
             <select class="form-select" name="school_id">
                 @foreach ($schools as $dato)
-                <option value="{{ $dato->id }}" {!! $student->school_id == $dato->id ? 'selected' : '' !!}>{{ $dato->name }}</option>
+                    <option value="{{ $dato->id }}" {!! $student->school_id == $dato->id ? 'selected' : '' !!}>{{ $dato->name }}</option>
                 @endforeach
             </select>
 
 
-              <br>
-              <x-button type="submit">
+            <br>
+            <x-button type="submit">
                 Modificar
-              </x-button>
+            </x-button>
 
-            </form>
-    </main>
-
+        </form>
+    </div>
 </x-base>

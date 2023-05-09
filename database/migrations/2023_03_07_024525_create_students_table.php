@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string("carnet")->unique();
             $table->string("name");
             $table->string("gender");
+            $table->softDeletes();
             $table->foreignIdFor(Section::class)->constrained();
             $table->foreignIdFor(Grade::class)->constrained();
             $table->foreignIdFor(School::class)->constrained();

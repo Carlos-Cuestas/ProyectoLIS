@@ -18,5 +18,9 @@ class UserSeeder extends Seeder
             'dui' => '1401200200567',
             'role_id' => 2
         ]);
+        User::factory()->create([
+            'dui' => '14012002',
+            'role_id' => 1
+        ]);
     }
 }

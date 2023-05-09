@@ -1,23 +1,18 @@
-<x-base>
-    <x-header/>
-    <main style="display:flex;">
-        <x-sidemenu controller="roles" />
+<x-base tipo="roles">
+    <div class="card border-1" style="width: 28rem;padding: 4%;">
+    <form action="{{ route('roles.store') }}" method="POST">
+        @csrf
 
-        <section>
-            <form action="{{ route('roles.store') }}" method="POST">
-                @csrf
+        @method('POST')
 
-                @method('POST')
-
-                <x-input id="type"  placeholder="" value="">
-                    Tipo:
-                </x-input>
+        <x-input id="type" placeholder="" value="">
+            Tipo:
+        </x-input>
 
 
-                <button type="submit">Mandar</button>
+        <x-button type="submit">Mandar</x-button>
 
-            </form>
-        </section>
-    </main>
-    <x-footer/>
+    </form>
+    </div>
+
 </x-base>

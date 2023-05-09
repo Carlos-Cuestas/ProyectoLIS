@@ -12,6 +12,9 @@ class State extends Model
 
     public $timestamps = false;
 
+    protected $guarded = [
+        'id',
+    ];
     public function schools(){
         return $this->hasMany(School::class);
     }

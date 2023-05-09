@@ -1,6 +1,7 @@
-<x-base>
+<x-base val="ini">
     <x-header/>
     <style>
+
         #container {
           display: grid;
           grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
@@ -23,7 +24,6 @@
         }
 
         button {
-          padding: 10px;
           font-size: 16px;
           background-color: #4CAF50;
           color: white;
@@ -39,33 +39,38 @@
 
     <div id="container">
 
-        <x-menubutton src="/img/schoolicon.png" href="schools" mesaje="Escuelas" styler="padding:2%;"/>
 
+        @if (Auth::user()->role_id == 1)
 
-        <x-menubutton src="/img/useravatar.png" href="users" mesaje="Usuarios" styler="padding:2%;"/>
+            <x-menubutton src="/img/schoolicon.png" href="schools" mesaje="Escuelas" styler="padding:2%;"/>
 
+            <x-menubutton src="/img/useravatar.png" href="users" mesaje="Usuarios" styler="padding:2%;"/>
 
-        <x-menubutton src="/img/role.png" href="roles" mesaje="Roles" styler="padding:2%;"/>
+            <x-menubutton src="/img/role.png" href="roles" mesaje="Roles" styler="padding:2%;"/>
 
+            <x-menubutton src="/img/alumn.png" href="students" mesaje="Alumnos" styler="padding:2%;"/>
 
-        <x-menubutton src="/img/alumn.png" href="students" mesaje="Alumnos" styler="padding:2%;"/>
+            <x-menubutton src="/img/grupos.png" href="sections" mesaje="Secciones" styler="padding:2%;"/>
 
+            <x-menubutton src="/img/materias.png" href="subjects" mesaje="Materias" styler="padding:2%;"/>
 
-        <x-menubutton src="/img/notas.png" href="scores" mesaje="Notas" styler="padding:2%;"/>
+            <x-menubutton src="/img/grados.png" href="grades" mesaje="Grados" styler="padding:2%;"/>
 
-        <x-menubutton src="/img/perfilpro.png" href="schools" mesaje="Perfiles" styler="padding:2%;"/>
+            <x-menubutton src="/img/estados.png" href="states" mesaje="Estados" styler="padding:2%;"/>
 
-        <x-menubutton src="/img/grupos.png" href="schools" mesaje="Secciones" styler="padding:2%;"/>
-        <x-menubutton src="/img/materias.png" href="schools" mesaje="Materias" styler="padding:2%;"/>
-        <x-menubutton src="/img/grados.png" href="schools" mesaje="Grados" styler="padding:2%;"/>
-        <x-menubutton src="/img/estados.png" href="schools" mesaje="Estados" styler="padding:2%;"/>
+            <x-menubutton src="/img/perfilpro.png" href="teachers" mesaje="Perfiles" styler="padding:2%;"/>
+        @endif
 
-        <x-menubutton src="/img/proceso.png" href="schools" mesaje="Mis Roles" styler="padding:2%;"/>
+        @if (Auth::user()->role_id == 2)
+
+            <x-menubutton src="/img/notas.png" href="scores" mesaje="Notas" styler="padding:2%;"/>
+
+        @endif
+
     </div>
         <br>
         <br>
         <br>
         <br>
         <br>
-    <x-footer/>
 </x-base>

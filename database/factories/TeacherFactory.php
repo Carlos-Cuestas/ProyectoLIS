@@ -25,7 +25,6 @@ class TeacherFactory extends Factory
             "user_id" => User::inRandomOrder()->limit(1)->first()->id,
             "subject_id" => Subject::inRandomOrder()->limit(1)->first()->id,
             "grade_id" => Grade::inRandomOrder()->limit(1)->first()->id,
-            "section_id" => Section::inRandomOrder()->limit(1)->first()->id,
         ];
     }
 }

@@ -1,4 +1,4 @@
-<x-base>
+<x-base val="ini">
 
     <x-header/>
 
@@ -19,12 +19,14 @@
 
             @auth
 
-            <form class="nav-link" action="{{ route('session.logout') }}" method="POST">
-                @csrf
-                <button type="submit" class="btn btn-secondary">
-                    Cerrar Sesion
-                </button>
-            </form>
+
+                <a href="/menu">
+                    <button type="submit" class="btn btn-secondary">
+                        Ir a menu
+                    </button>
+
+                </a>
+
 
             @endauth
 

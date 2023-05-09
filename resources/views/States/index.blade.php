@@ -1,28 +1,24 @@
-<x-base tipo="schools">
+<x-base tipo="states">
 
-    <div class="p-5">
+    <div class="p-4">
         <label class="fw-bold">Buscar Nombre:</label>
         <input type="text" id="buscador-nombre" placeholder="Buscar por nombre">
     </div>
 
-    <div style="width: 50rem;">
+    <div class="text-center">
         <table class="table" id="miTabla">
-            <thead>
-                <tr class="table-dark">
-                    <th>Centro Escolar</th>
-                    <th>Estado</th>
-                    <th>Editar</th>
-                    <th>Eliminar</th>
-                </tr>
+            <thead class="table-dark">
+                <th>Nombre</th>
+                <th>Editar</th>
+                <th>Eliminar</th>
             </thead>
             <tbody class="table-secondary">
-                @foreach ($schools as $school)
+                @foreach ($states as $state)
                     <tr>
-                        <td>{{ $school->name }}</td>
-                        <td>{{ $school->state->name }}</td>
-                        <td><a href="{{ route('schools.edit', $school->id) }}"><img src="/img/edit.png" alt="editimg"
+                        <td>{{ $state->name }}</td>
+                        <td><a href="{{ route('states.edit', $state->id) }}"><img src="/img/edit.png" alt="editimg"
                                     height="25px" width="25px"></a></td>
-                        <form action="{{ route('schools.destroy', $school->id) }}" method="POST"
+                        <form action="{{ route('states.destroy', $state->id) }}" method="POST"
                             style="display: inline-block;">
                             @csrf
                             @method('DELETE')
@@ -35,6 +31,6 @@
                 @endforeach
             </tbody>
         </table>
-        <x-pagbus />
     </div>
+    <x-pagbus />
 </x-base>

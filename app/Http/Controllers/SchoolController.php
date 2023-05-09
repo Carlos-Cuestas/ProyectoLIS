@@ -25,7 +25,6 @@ class SchoolController extends Controller
     {
         return view('Schools/Create', [
             'states' => State::all(),
-
         ]);
     }
 
@@ -85,7 +84,11 @@ class SchoolController extends Controller
      */
     public function destroy(School $school)
     {
-        $school->delete();
+        try {
+            $school->delete();
         return back()->with('success','Borrado Correctamente');
+        } catch (\Throwable $th) {
+            return back();
+        }
     }
 }

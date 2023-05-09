@@ -1,11 +1,16 @@
 <?php
 
+use App\Http\Controllers\GradeController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\SchoolController;
 use App\Http\Controllers\ScoreController;
-use App\Http\Controllers\StaffController;
+use App\Http\Controllers\SectionController;
+use App\Http\Controllers\StateController;
 use App\Http\Controllers\StudentController;
+use App\Http\Controllers\SubjectController;
+use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\UserController;
+
 use Illuminate\Support\Facades\Route;
 use Illuminate\Validation\ValidationException;
 
@@ -32,13 +37,10 @@ Route::get('login', function(){
     return redirect('/');
 })->name('login');
 
-Route::get('menu', function(){
-return view('menu');
-})->middleware('auth');
 
-Route::get('menur', function(){
+Route::get('/menu', function(){
     return view('menu');
-    })->name('menur');
+    })->middleware('auth')->name('menu');
 
 Route::get('scho', function(){
     return redirect('schools');
@@ -76,3 +78,8 @@ Route::resource('roles', RoleController::class)->middleware('auth');
 Route::resource('students', StudentController::class)->middleware('auth');
 Route::get('scores', [ScoreController::class, 'index'])->middleware('auth');
 Route::post('scores', [ScoreController::class, 'update'])->name('scores.update')->middleware('auth');
+Route::resource('teachers', TeacherController::class)->middleware('auth');
+Route::resource('sections', SectionController::class)->middleware('auth');
+Route::resource('subjects', SubjectController::class)->middleware('auth');
+Route::resource('grades', GradeController::class)->middleware('auth');
+Route::resource('states', StateController::class)->middleware('auth');
