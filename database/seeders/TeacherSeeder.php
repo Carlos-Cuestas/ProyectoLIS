@@ -16,6 +16,7 @@ class TeacherSeeder extends Seeder
     public function run(): void
     {
         $users =User::where('role_id', 2)->get();
+        
         Teacher::factory(count($users))->sequence(fn ($sqn)=>[
             'user_id'=> $users[$sqn->index]->id,
         ])->create();
